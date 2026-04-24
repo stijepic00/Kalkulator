@@ -362,7 +362,7 @@ namespace Projekat_kalkulator
         {
             try
             {
-                string connectionString = "Server=DESKTOP-J73S4GL;Database=KalkulatorDB;Trusted_Connection=True;";
+                string connectionString = "Server=DESKTOP-U59UFEA\\SQLEXPRESS;Database=KalkulatorDB;Trusted_Connection=True;";
 
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {

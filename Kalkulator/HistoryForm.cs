@@ -30,7 +30,7 @@ namespace Kalkulator
 
         private void UcitajIstorijuUKartice()
         {
-            string connectionString = "Server=DESKTOP-J73S4GL;Database=KalkulatorDB;Trusted_Connection=True;";
+            string connectionString = "Server=DESKTOP-U59UFEA\\SQLEXPRESS;Database=KalkulatorDB;Trusted_Connection=True;";
 
             try
             {
@@ -43,8 +43,6 @@ namespace Kalkulator
                     DataTable table = new DataTable();
                     adapter.Fill(table);
 
-                    // DODAJ OVU LINIJU ZA TEST:
-                    MessageBox.Show("Broj redova u bazi: " + table.Rows.Count);
 
                     // 1. Očisti flowHistory od starih stvari ili DataGridView-a (ako je ostao u kodu)
                     flowHistory.Controls.Clear();
@@ -115,6 +113,11 @@ namespace Kalkulator
         }
 
         private void HistoryForm_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void flowHistory_Paint(object sender, PaintEventArgs e)
         {
 
         }
