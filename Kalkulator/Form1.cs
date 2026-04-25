@@ -1,12 +1,10 @@
 ﻿using Kalkulator;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -32,6 +30,9 @@ namespace Projekat_kalkulator
         {
             InitializeComponent();
             this.KeyPreview = true;
+
+            // POSTAVLJANJE DEFAULT NIGHT MODE-A ODMAH NA STARTU
+            PostaviTemu(Color.FromArgb(45, 45, 48), Color.White, Color.FromArgb(30, 30, 30));
         }
 
         public class API_Response
@@ -40,46 +41,7 @@ namespace Projekat_kalkulator
             public Dictionary<string, double> conversion_rates { get; set; }
         }
 
-        private async Task AzurirajKurseveSaInterneta()
-        {
-            try
-            {
-                using (HttpClient klijent = new HttpClient())
-                {
-                    // Koristi pouzdaniji API (npr. exchangerate-api.com - zahtijeva besplatan ključ)
-                    // Za testiranje, osiguraj da URL zaista vraća JSON
-                    string url = "https://open.er-api.com/v6/latest/BAM";
-                    string jsonRezultat = await klijent.GetStringAsync(url);
 
-                    var podaci = JsonConvert.DeserializeObject<dynamic>(jsonRezultat);
-
-                    // API koji sam naveo iznad koristi "rates" ili "rates" polje
-                    if (podaci != null && podaci.rates != null)
-                    {
-                        // Uzimamo direktne vrijednosti jer je baza BAM (1 BAM = X EUR)
-                        double bamToEur = (double)podaci.rates.EUR;
-                        double bamToUsd = (double)podaci.rates.USD;
-
-                        // Ako je baza BAM, onda je kurs za množenje (npr. 0.511)
-                        // Da dobiješ koliko je 1 EUR u BAM-ovima (1.95):
-                        trenutniEurKurs = 1.0 / bamToEur;
-                        trenutniUsdKurs = 1.0 / bamToUsd;
-
-                        lblStatusKursa.Invoke((MethodInvoker)delegate {
-                            lblStatusKursa.Text = $"Internet kurs: EUR={trenutniEurKurs:F2} USD={trenutniUsdKurs:F2}";
-                            lblStatusKursa.ForeColor = Color.Lime;
-
-                        });
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                // Ako nema interneta, koristi fiksne vrijednosti
-                izvorPodataka = "fiksni kurs (offline)";
-                lblStatusKursa.Text = "Offline - koriste se fiksni kursevi";
-            }
-        }
 
         // ==================== FUNKCIJA ZA PROMJENU TEME ====================
         private void PostaviTemu(Color bojaPozadine, Color bojaTeksta, Color bojaDugmadi)
@@ -91,29 +53,41 @@ namespace Projekat_kalkulator
             {
                 if (c is Button btn)
                 {
-                    bool jeSpecijalnoDugme = (btn == btnPlus || btn == btnMinus || btn == btnMultiply ||
-                                             btn == btnDivide || btn == btnClear || btn == btnAdvanced ||
-                                             btn == btnSqrt || btn == btnSquare || btn == btnInverse ||
-                                             btn == btnPercent || btn == btnDot || btn == btnEquals);
-
-                    if (jeSpecijalnoDugme)
+                    // 1. FIKSNE BOJE (Ove se nikada ne mijenjaju)
+                    if (btn == btnClear)
                     {
-                        btn.ForeColor = isLightMode ? Color.Black : Color.White;
-                        btn.UseVisualStyleBackColor = false;
-                        continue;
+                        btn.BackColor = Color.IndianRed;
+                        btn.ForeColor = Color.White;
                     }
-
-                    if (btn.Text.Length == 1 && char.IsDigit(btn.Text[0]))
+                    else if (btn == btnAdvanced)
                     {
-                        btn.BackColor = isLightMode ? Color.LightGray : bojaDugmadi;
+                        btn.BackColor = Color.FromKnownColor(KnownColor.MenuHighlight);
+                        btn.ForeColor = Color.White;
+                    }
+                    // 2. FUNKCIJE I JEDNAKO (SteelBlue)
+                    else if (btn == btnPlus || btn == btnMinus || btn == btnMultiply ||
+                             btn == btnDivide || btn == btnSqrt || btn == btnSquare ||
+                             btn == btnInverse || btn == btnPercent || btn == btnEquals)
+                    {
+                        btn.BackColor = Color.SteelBlue;
+                        btn.ForeColor = Color.White;
+                    }
+                    // 3. BROJEVI I OSTALO (Prate temu)
+                    else if (btn.Text.Length == 1 && (char.IsDigit(btn.Text[0]) || btn.Text == ","))
+                    {
+                        btn.BackColor = isLightMode ? Color.White : bojaDugmadi;
                         btn.ForeColor = isLightMode ? Color.Black : bojaTeksta;
-                        btn.UseVisualStyleBackColor = false;
-                        continue;
+                    }
+                    else
+                    {
+                        btn.BackColor = isLightMode ? Color.FromArgb(220, 220, 220) : Color.FromArgb(50, 50, 50);
+                        btn.ForeColor = isLightMode ? Color.Black : Color.White;
                     }
 
-                    btn.BackColor = bojaDugmadi;
-                    btn.ForeColor = bojaTeksta;
+                    // FANCY FLAT STIL
                     btn.UseVisualStyleBackColor = false;
+                    btn.FlatStyle = FlatStyle.Flat;
+                    btn.FlatAppearance.BorderSize = 0;
                 }
                 else if (c is TextBox txt)
                 {
@@ -122,41 +96,16 @@ namespace Projekat_kalkulator
                 }
             }
         }
-
         private void btnDarkMode_Click(object sender, EventArgs e)
         {
+            // Samo jedna linija - šaljemo parametre za Night Mode
             PostaviTemu(Color.FromArgb(45, 45, 48), Color.White, Color.FromArgb(30, 30, 30));
         }
 
         private void btnLightMode_Click(object sender, EventArgs e)
         {
-            this.BackColor = SystemColors.Control;
-            txtDisplay.BackColor = Color.White;
-            txtDisplay.ForeColor = Color.Black;
-
-            foreach (Control c in this.Controls)
-            {
-                if (c is Button btn)
-                {
-                    if (btn.Text.Length == 1 && char.IsDigit(btn.Text[0]))
-                    {
-                        btn.BackColor = Color.LightGray;
-                        btn.ForeColor = Color.Black;
-                        btn.UseVisualStyleBackColor = false;
-                    }
-                    else if (btn == btnDot || btn.Text == ",")
-                    {
-                        btn.BackColor = SystemColors.Control;
-                        btn.ForeColor = Color.Black;
-                        btn.UseVisualStyleBackColor = false;
-                    }
-                    else
-                    {
-                        btn.UseVisualStyleBackColor = true;
-                        btn.ForeColor = Color.Black;
-                    }
-                }
-            }
+            // Samo jedna linija - šaljemo parametre za Light Mode
+            PostaviTemu(SystemColors.Control, Color.Black, Color.White);
         }
 
         private void FixBrojeve()
@@ -337,32 +286,16 @@ namespace Projekat_kalkulator
             System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls13;
 
             txtDisplay.Text = "0";
-            ResetujListe();
-            cmbIzvorna.SelectedIndex = -1;
-            cmbCiljna.SelectedIndex = -1;
-
-            await AzurirajKurseveSaInterneta();
+            
         }
 
-        private void ResetujListe()
-        {
-            cmbIzvorna.Items.Clear();
-            cmbCiljna.Items.Clear();
-
-            cmbIzvorna.Items.AddRange(valute);
-            cmbIzvorna.Items.AddRange(tezine);
-            cmbIzvorna.Items.AddRange(duzine);
-
-            cmbCiljna.Items.AddRange(valute);
-            cmbCiljna.Items.AddRange(tezine);
-            cmbCiljna.Items.AddRange(duzine);
-        }
+        
 
         private void SacuvajUBazu(string izraz, string rezultat)
         {
             try
             {
-                string connectionString = "Server=DESKTOP-U59UFEA\\SQLEXPRESS;Database=KalkulatorDB;Trusted_Connection=True;";
+                string connectionString = "Server=DESKTOP-J73S4GL;Database=KalkulatorDB;Trusted_Connection=True;";
 
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
@@ -428,164 +361,13 @@ namespace Projekat_kalkulator
         private void btnInverse_Click(object sender, EventArgs e) { DodajZnak("1/"); }
         private void btnPercent_Click(object sender, EventArgs e) { DodajZnak("%"); }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            cleanMode = !cleanMode;
-
-            foreach (Control c in this.Controls)
-            {
-                if (c != btnMode && c != pnlConverter)
-                {
-                    c.Visible = !cleanMode;
-                }
-            }
-
-            if (cleanMode)
-            {
-                txtDisplay.Visible = false;
-                pnlConverter.Visible = true;
-                pnlConverter.Dock = DockStyle.Fill;
-                pnlConverter.BringToFront();
-                btnMode.BringToFront();
-            }
-            else
-            {
-                pnlConverter.Dock = DockStyle.None;
-                pnlConverter.Visible = false;
-                txtDisplay.Visible = true;
-                ResetujListe();
-            }
-        }
+       
 
         // ==================== KONVERTER - OVO JE BILO NEDOSTAJEĆE ====================
-        private void btnConvertNow_Click(object sender, EventArgs e)
-        {
-            // Resetovanje boja
-            cmbIzvorna.BackColor = Color.White;
-            cmbCiljna.BackColor = Color.White;
-            txtValueToConvert.BackColor = Color.White;
-            lblConverterResult.Text = "";
+        
+           
+        
 
-            double unos = 0;
-            bool greska = false;
-
-            // Validacija
-            if (cmbIzvorna.SelectedIndex == -1) { cmbIzvorna.BackColor = Color.MistyRose; greska = true; }
-            if (cmbCiljna.SelectedIndex == -1) { cmbCiljna.BackColor = Color.MistyRose; greska = true; }
-
-            string cistUnos = txtValueToConvert.Text.Replace(",", ".");
-            if (string.IsNullOrWhiteSpace(cistUnos) || !double.TryParse(cistUnos, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out unos))
-            {
-                txtValueToConvert.BackColor = Color.MistyRose;
-                greska = true;
-            }
-
-            if (greska)
-            {
-                lblConverterResult.Text = "Popunite označena polja!";
-                lblConverterResult.ForeColor = Color.Orange;
-                return;
-            }
-
-            try
-            {
-                double rezultat = 0;
-                string iz = cmbIzvorna.SelectedItem.ToString();
-                string u = cmbCiljna.SelectedItem.ToString();
-
-                // --- VALUTE ---
-                if (Array.Exists(valute, x => x == iz))
-                {
-                    double iznosUBam = unos;
-
-                    if (iz.Contains("EUR"))
-                        iznosUBam = unos * trenutniEurKurs;
-                    else if (iz.Contains("USD"))
-                        iznosUBam = unos * trenutniUsdKurs;
-                    else if (iz.Contains("HRK"))
-                        iznosUBam = unos * 0.26;
-
-                    if (u.Contains("EUR"))
-                        rezultat = iznosUBam / trenutniEurKurs;
-                    else if (u.Contains("USD"))
-                        rezultat = iznosUBam / trenutniUsdKurs;
-                    else if (u.Contains("HRK"))
-                        rezultat = iznosUBam / 0.26;
-                    else if (u.Contains("BAM"))
-                        rezultat = iznosUBam;
-
-                    lblStatusKursa.Text = $"Korišten kurs: 1 EUR = {trenutniEurKurs:F4} BAM | Izvor: {izvorPodataka}";
-                    lblStatusKursa.ForeColor = Color.Lime;
-                }
-                // --- TEŽINE ---
-                else if (Array.Exists(tezine, x => x == iz))
-                {
-                    double uG = iz.Contains("(t)") ? unos * 1000000 :
-                               iz.Contains("kg") ? unos * 1000 :
-                               iz.Contains("mg") ? unos / 1000 : unos;
-
-                    rezultat = u.Contains("(t)") ? uG / 1000000 :
-                               u.Contains("kg") ? uG / 1000 :
-                               u.Contains("mg") ? uG * 1000 : uG;
-
-                    lblStatusKursa.Text = "Konverzija težine završena.";
-                    lblStatusKursa.ForeColor = Color.Cyan;
-                }
-                // --- DUŽINE ---
-                else if (Array.Exists(duzine, x => x == iz))
-                {
-                    double uM = iz.Contains("(mm)") ? unos / 1000.0 :
-                               iz.Contains("(cm)") ? unos / 100.0 :
-                               iz.Contains("(dm)") ? unos / 10.0 :
-                               iz.Contains("(km)") ? unos * 1000.0 : unos;
-
-                    rezultat = u.Contains("mm") ? uM * 1000.0 :
-                               u.Contains("cm") ? uM * 100.0 :
-                               u.Contains("dm") ? uM * 10.0 :
-                               u.Contains("km") ? uM / 1000.0 : uM;
-
-                    lblStatusKursa.Text = "Konverzija dužine završena.";
-                    lblStatusKursa.ForeColor = Color.Yellow;
-                }
-
-                string oznakaIzvor = iz.Contains("(") ? iz.Split('(')[1].Replace(")", "") : iz;
-                string oznakaCilj = u.Contains("(") ? u.Split('(')[1].Replace(")", "") : u;
-
-                lblConverterResult.Text = $"{unos} {oznakaIzvor} = {Math.Round(rezultat, 4)} {oznakaCilj}";
-                lblConverterResult.ForeColor = Color.Lime;
-            }
-            catch (Exception ex)
-            {
-                lblConverterResult.Text = "Greška u računanju!";
-                lblConverterResult.ForeColor = Color.Red;
-                System.Diagnostics.Debug.WriteLine("Greška: " + ex.Message);
-            }
-        }
-
-        private void lblVelikiRezultat_Click(object sender, EventArgs e) { }
-
-        private void cmbIzvorna_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbIzvorna.SelectedItem == null) return;
-
-            string izabrano = cmbIzvorna.SelectedItem.ToString();
-            cmbCiljna.Items.Clear();
-
-            if (Array.Exists(valute, x => x == izabrano))
-                cmbCiljna.Items.AddRange(valute);
-            else if (Array.Exists(tezine, x => x == izabrano))
-                cmbCiljna.Items.AddRange(tezine);
-            else if (Array.Exists(duzine, x => x == izabrano))
-                cmbCiljna.Items.AddRange(duzine);
-
-            cmbCiljna.SelectedIndex = -1;
-        }
-
-        private void cmbCiljna_SelectedIndexChanged(object sender, EventArgs e) { }
-
-        private void btnLightMode_Click_1(object sender, EventArgs e)
-        {
-            PostaviTemu(SystemColors.Control, Color.Black, SystemColors.ButtonFace);
-        }
+        
     }
 }

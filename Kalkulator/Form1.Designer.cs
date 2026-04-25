@@ -35,7 +35,6 @@
             this.btnDivide = new System.Windows.Forms.Button();
             this.btnMultiply = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
-            this.btnEquals = new System.Windows.Forms.Button();
             this.btn1 = new System.Windows.Forms.Button();
             this.btnDot = new System.Windows.Forms.Button();
             this.btn3 = new System.Windows.Forms.Button();
@@ -48,24 +47,15 @@
             this.btn7 = new System.Windows.Forms.Button();
             this.btn0 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.btnSqrt = new System.Windows.Forms.Button();
-            this.btnSquare = new System.Windows.Forms.Button();
-            this.btnInverse = new System.Windows.Forms.Button();
-            this.btnPercent = new System.Windows.Forms.Button();
-            this.pnlConverter = new System.Windows.Forms.Panel();
-            this.lblStatusKursa = new System.Windows.Forms.Label();
-            this.cmbIzvorna = new System.Windows.Forms.ComboBox();
-            this.lblVelikiRezultat = new System.Windows.Forms.Label();
-            this.btnConvertNow = new System.Windows.Forms.Button();
-            this.lblConverterResult = new System.Windows.Forms.Label();
-            this.cmbCiljna = new System.Windows.Forms.ComboBox();
-            this.txtValueToConvert = new System.Windows.Forms.TextBox();
             this.btnHistory = new System.Windows.Forms.Button();
             this.btnLightMode = new System.Windows.Forms.Button();
             this.btnDarkMode = new System.Windows.Forms.Button();
-            this.btnMode = new System.Windows.Forms.Button();
             this.btnAdvanced = new System.Windows.Forms.Button();
-            this.pnlConverter.SuspendLayout();
+            this.btnPercent = new System.Windows.Forms.Button();
+            this.btnInverse = new System.Windows.Forms.Button();
+            this.btnSquare = new System.Windows.Forms.Button();
+            this.btnSqrt = new System.Windows.Forms.Button();
+            this.btnEquals = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtDisplay
@@ -83,7 +73,7 @@
             // btnPlus
             // 
             this.btnPlus.AccessibleName = "";
-            this.btnPlus.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnPlus.BackColor = System.Drawing.Color.SteelBlue;
             this.btnPlus.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPlus.Location = new System.Drawing.Point(245, 326);
             this.btnPlus.Name = "btnPlus";
@@ -95,7 +85,7 @@
             // 
             // btnMinus
             // 
-            this.btnMinus.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnMinus.BackColor = System.Drawing.Color.SteelBlue;
             this.btnMinus.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMinus.Location = new System.Drawing.Point(245, 256);
             this.btnMinus.Name = "btnMinus";
@@ -107,7 +97,7 @@
             // 
             // btnDivide
             // 
-            this.btnDivide.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnDivide.BackColor = System.Drawing.Color.SteelBlue;
             this.btnDivide.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDivide.Location = new System.Drawing.Point(245, 116);
             this.btnDivide.Name = "btnDivide";
@@ -119,7 +109,7 @@
             // 
             // btnMultiply
             // 
-            this.btnMultiply.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnMultiply.BackColor = System.Drawing.Color.SteelBlue;
             this.btnMultiply.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMultiply.Location = new System.Drawing.Point(245, 186);
             this.btnMultiply.Name = "btnMultiply";
@@ -132,6 +122,7 @@
             // btnClear
             // 
             this.btnClear.BackColor = System.Drawing.Color.IndianRed;
+            this.btnClear.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClear.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.Location = new System.Drawing.Point(5, 400);
             this.btnClear.Name = "btnClear";
@@ -140,18 +131,6 @@
             this.btnClear.Text = "C";
             this.btnClear.UseVisualStyleBackColor = false;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-            // 
-            // btnEquals
-            // 
-            this.btnEquals.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnEquals.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEquals.Location = new System.Drawing.Point(165, 326);
-            this.btnEquals.Name = "btnEquals";
-            this.btnEquals.Size = new System.Drawing.Size(70, 60);
-            this.btnEquals.TabIndex = 5;
-            this.btnEquals.Text = "=";
-            this.btnEquals.UseVisualStyleBackColor = false;
-            this.btnEquals.Click += new System.EventHandler(this.btnEquals_Click);
             // 
             // btn1
             // 
@@ -295,152 +274,6 @@
             this.button1.Text = "7";
             this.button1.UseVisualStyleBackColor = false;
             // 
-            // btnSqrt
-            // 
-            this.btnSqrt.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnSqrt.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSqrt.Location = new System.Drawing.Point(245, 116);
-            this.btnSqrt.Name = "btnSqrt";
-            this.btnSqrt.Size = new System.Drawing.Size(70, 60);
-            this.btnSqrt.TabIndex = 22;
-            this.btnSqrt.Text = "√";
-            this.btnSqrt.UseVisualStyleBackColor = false;
-            this.btnSqrt.Visible = false;
-            this.btnSqrt.Click += new System.EventHandler(this.btnSqrt_Click);
-            // 
-            // btnSquare
-            // 
-            this.btnSquare.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnSquare.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSquare.Location = new System.Drawing.Point(245, 186);
-            this.btnSquare.Name = "btnSquare";
-            this.btnSquare.Size = new System.Drawing.Size(70, 60);
-            this.btnSquare.TabIndex = 23;
-            this.btnSquare.Text = "x²";
-            this.btnSquare.UseVisualStyleBackColor = false;
-            this.btnSquare.Visible = false;
-            this.btnSquare.Click += new System.EventHandler(this.btnSquare_Click);
-            // 
-            // btnInverse
-            // 
-            this.btnInverse.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnInverse.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInverse.Location = new System.Drawing.Point(245, 256);
-            this.btnInverse.Name = "btnInverse";
-            this.btnInverse.Size = new System.Drawing.Size(70, 60);
-            this.btnInverse.TabIndex = 24;
-            this.btnInverse.Text = "1/x";
-            this.btnInverse.UseVisualStyleBackColor = false;
-            this.btnInverse.Visible = false;
-            this.btnInverse.Click += new System.EventHandler(this.btnInverse_Click);
-            // 
-            // btnPercent
-            // 
-            this.btnPercent.AccessibleName = "";
-            this.btnPercent.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnPercent.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPercent.Location = new System.Drawing.Point(245, 326);
-            this.btnPercent.Name = "btnPercent";
-            this.btnPercent.Size = new System.Drawing.Size(70, 60);
-            this.btnPercent.TabIndex = 25;
-            this.btnPercent.Text = "%";
-            this.btnPercent.UseVisualStyleBackColor = false;
-            this.btnPercent.Visible = false;
-            this.btnPercent.Click += new System.EventHandler(this.btnPercent_Click);
-            // 
-            // pnlConverter
-            // 
-            this.pnlConverter.Controls.Add(this.lblStatusKursa);
-            this.pnlConverter.Controls.Add(this.cmbIzvorna);
-            this.pnlConverter.Controls.Add(this.lblVelikiRezultat);
-            this.pnlConverter.Controls.Add(this.btnConvertNow);
-            this.pnlConverter.Controls.Add(this.lblConverterResult);
-            this.pnlConverter.Controls.Add(this.cmbCiljna);
-            this.pnlConverter.Controls.Add(this.txtValueToConvert);
-            this.pnlConverter.Location = new System.Drawing.Point(5, 104);
-            this.pnlConverter.Name = "pnlConverter";
-            this.pnlConverter.Size = new System.Drawing.Size(310, 358);
-            this.pnlConverter.TabIndex = 27;
-            this.pnlConverter.Visible = false;
-            // 
-            // lblStatusKursa
-            // 
-            this.lblStatusKursa.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.lblStatusKursa.Location = new System.Drawing.Point(15, 296);
-            this.lblStatusKursa.Name = "lblStatusKursa";
-            this.lblStatusKursa.Size = new System.Drawing.Size(290, 63);
-            this.lblStatusKursa.TabIndex = 6;
-            this.lblStatusKursa.Text = "Status kursa";
-            this.lblStatusKursa.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // cmbIzvorna
-            // 
-            this.cmbIzvorna.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cmbIzvorna.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbIzvorna.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.cmbIzvorna.FormattingEnabled = true;
-            this.cmbIzvorna.Location = new System.Drawing.Point(170, 66);
-            this.cmbIzvorna.Name = "cmbIzvorna";
-            this.cmbIzvorna.Size = new System.Drawing.Size(91, 24);
-            this.cmbIzvorna.TabIndex = 5;
-            this.cmbIzvorna.SelectedIndexChanged += new System.EventHandler(this.cmbIzvorna_SelectedIndexChanged);
-            // 
-            // lblVelikiRezultat
-            // 
-            this.lblVelikiRezultat.AutoSize = true;
-            this.lblVelikiRezultat.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.25F, System.Drawing.FontStyle.Bold);
-            this.lblVelikiRezultat.Location = new System.Drawing.Point(10, 14);
-            this.lblVelikiRezultat.Name = "lblVelikiRezultat";
-            this.lblVelikiRezultat.Size = new System.Drawing.Size(300, 30);
-            this.lblVelikiRezultat.TabIndex = 4;
-            this.lblVelikiRezultat.Text = "KONVERTOR VALUTA";
-            this.lblVelikiRezultat.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblVelikiRezultat.Click += new System.EventHandler(this.lblVelikiRezultat_Click);
-            // 
-            // btnConvertNow
-            // 
-            this.btnConvertNow.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.btnConvertNow.Location = new System.Drawing.Point(49, 157);
-            this.btnConvertNow.Name = "btnConvertNow";
-            this.btnConvertNow.Size = new System.Drawing.Size(212, 59);
-            this.btnConvertNow.TabIndex = 3;
-            this.btnConvertNow.Text = "Pokreni konverziju";
-            this.btnConvertNow.UseVisualStyleBackColor = true;
-            this.btnConvertNow.Click += new System.EventHandler(this.btnConvertNow_Click);
-            // 
-            // lblConverterResult
-            // 
-            this.lblConverterResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 18.75F, System.Drawing.FontStyle.Bold);
-            this.lblConverterResult.Location = new System.Drawing.Point(3, 207);
-            this.lblConverterResult.Name = "lblConverterResult";
-            this.lblConverterResult.Size = new System.Drawing.Size(313, 140);
-            this.lblConverterResult.TabIndex = 2;
-            this.lblConverterResult.Text = "Rezultat";
-            this.lblConverterResult.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // cmbCiljna
-            // 
-            this.cmbCiljna.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cmbCiljna.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbCiljna.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.cmbCiljna.FormattingEnabled = true;
-            this.cmbCiljna.Location = new System.Drawing.Point(49, 96);
-            this.cmbCiljna.Name = "cmbCiljna";
-            this.cmbCiljna.Size = new System.Drawing.Size(212, 25);
-            this.cmbCiljna.TabIndex = 1;
-            this.cmbCiljna.Text = "Odaberi konverziju";
-            this.cmbCiljna.SelectedIndexChanged += new System.EventHandler(this.cmbCiljna_SelectedIndexChanged);
-            // 
-            // txtValueToConvert
-            // 
-            this.txtValueToConvert.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.txtValueToConvert.Location = new System.Drawing.Point(49, 67);
-            this.txtValueToConvert.Name = "txtValueToConvert";
-            this.txtValueToConvert.Size = new System.Drawing.Size(115, 23);
-            this.txtValueToConvert.TabIndex = 0;
-            this.txtValueToConvert.Text = "Unesi vrijednost";
-            this.txtValueToConvert.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
             // btnHistory
             // 
             this.btnHistory.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnHistory.BackgroundImage")));
@@ -451,7 +284,7 @@
             this.btnHistory.Size = new System.Drawing.Size(47, 46);
             this.btnHistory.TabIndex = 20;
             this.btnHistory.UseVisualStyleBackColor = true;
-            this.btnHistory.Click += new System.EventHandler(this.btnHistory_Click_1);
+            this.btnHistory.Click += new System.EventHandler(this.btnHistory_Click);
             // 
             // btnLightMode
             // 
@@ -463,7 +296,7 @@
             this.btnLightMode.Size = new System.Drawing.Size(47, 46);
             this.btnLightMode.TabIndex = 19;
             this.btnLightMode.UseVisualStyleBackColor = true;
-            this.btnLightMode.Click += new System.EventHandler(this.btnLightMode_Click_1);
+            this.btnLightMode.Click += new System.EventHandler(this.btnLightMode_Click);
             // 
             // btnDarkMode
             // 
@@ -478,17 +311,6 @@
             this.btnDarkMode.UseVisualStyleBackColor = false;
             this.btnDarkMode.Click += new System.EventHandler(this.btnDarkMode_Click);
             // 
-            // btnMode
-            // 
-            this.btnMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
-            this.btnMode.Location = new System.Drawing.Point(282, 401);
-            this.btnMode.Name = "btnMode";
-            this.btnMode.Size = new System.Drawing.Size(33, 61);
-            this.btnMode.TabIndex = 26;
-            this.btnMode.Text = "🧹";
-            this.btnMode.UseVisualStyleBackColor = true;
-            this.btnMode.Click += new System.EventHandler(this.button2_Click);
-            // 
             // btnAdvanced
             // 
             this.btnAdvanced.BackColor = System.Drawing.SystemColors.MenuHighlight;
@@ -496,23 +318,88 @@
             this.btnAdvanced.Font = new System.Drawing.Font("Segoe UI", 15.75F);
             this.btnAdvanced.Location = new System.Drawing.Point(161, 400);
             this.btnAdvanced.Name = "btnAdvanced";
-            this.btnAdvanced.Size = new System.Drawing.Size(120, 62);
+            this.btnAdvanced.Size = new System.Drawing.Size(154, 62);
             this.btnAdvanced.TabIndex = 6;
             this.btnAdvanced.Text = "Napredno";
             this.btnAdvanced.UseVisualStyleBackColor = false;
             this.btnAdvanced.Click += new System.EventHandler(this.btnAdvanced_Click);
+            // 
+            // btnPercent
+            // 
+            this.btnPercent.AccessibleName = "";
+            this.btnPercent.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnPercent.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPercent.Location = new System.Drawing.Point(245, 326);
+            this.btnPercent.Name = "btnPercent";
+            this.btnPercent.Size = new System.Drawing.Size(70, 60);
+            this.btnPercent.TabIndex = 30;
+            this.btnPercent.Text = "%";
+            this.btnPercent.UseVisualStyleBackColor = false;
+            this.btnPercent.Visible = false;
+            this.btnPercent.Click += new System.EventHandler(this.btnPercent_Click);
+            // 
+            // btnInverse
+            // 
+            this.btnInverse.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnInverse.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInverse.Location = new System.Drawing.Point(245, 256);
+            this.btnInverse.Name = "btnInverse";
+            this.btnInverse.Size = new System.Drawing.Size(70, 60);
+            this.btnInverse.TabIndex = 29;
+            this.btnInverse.Text = "1/x";
+            this.btnInverse.UseVisualStyleBackColor = false;
+            this.btnInverse.Visible = false;
+            this.btnInverse.Click += new System.EventHandler(this.btnInverse_Click);
+            // 
+            // btnSquare
+            // 
+            this.btnSquare.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnSquare.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSquare.Location = new System.Drawing.Point(245, 186);
+            this.btnSquare.Name = "btnSquare";
+            this.btnSquare.Size = new System.Drawing.Size(70, 60);
+            this.btnSquare.TabIndex = 28;
+            this.btnSquare.Text = "x²";
+            this.btnSquare.UseVisualStyleBackColor = false;
+            this.btnSquare.Visible = false;
+            this.btnSquare.Click += new System.EventHandler(this.btnSquare_Click);
+            // 
+            // btnSqrt
+            // 
+            this.btnSqrt.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnSqrt.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSqrt.Location = new System.Drawing.Point(245, 116);
+            this.btnSqrt.Name = "btnSqrt";
+            this.btnSqrt.Size = new System.Drawing.Size(70, 60);
+            this.btnSqrt.TabIndex = 27;
+            this.btnSqrt.Text = "√";
+            this.btnSqrt.UseVisualStyleBackColor = false;
+            this.btnSqrt.Visible = false;
+            this.btnSqrt.Click += new System.EventHandler(this.btnSqrt_Click);
+            // 
+            // btnEquals
+            // 
+            this.btnEquals.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnEquals.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEquals.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnEquals.Location = new System.Drawing.Point(165, 326);
+            this.btnEquals.Name = "btnEquals";
+            this.btnEquals.Size = new System.Drawing.Size(70, 60);
+            this.btnEquals.TabIndex = 26;
+            this.btnEquals.Text = "=";
+            this.btnEquals.UseVisualStyleBackColor = false;
+            this.btnEquals.Click += new System.EventHandler(this.btnEquals_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(322, 474);
-            this.Controls.Add(this.pnlConverter);
-            this.Controls.Add(this.btnMode);
             this.Controls.Add(this.btnPercent);
             this.Controls.Add(this.btnInverse);
             this.Controls.Add(this.btnSquare);
             this.Controls.Add(this.btnSqrt);
+            this.Controls.Add(this.btnEquals);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnAdvanced);
             this.Controls.Add(this.btnHistory);
@@ -530,7 +417,6 @@
             this.Controls.Add(this.btn1);
             this.Controls.Add(this.btnDot);
             this.Controls.Add(this.btnClear);
-            this.Controls.Add(this.btnEquals);
             this.Controls.Add(this.btnDivide);
             this.Controls.Add(this.btnMultiply);
             this.Controls.Add(this.btnMinus);
@@ -544,8 +430,6 @@
             this.Activated += new System.EventHandler(this.Form1_Activated);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
-            this.pnlConverter.ResumeLayout(false);
-            this.pnlConverter.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -559,7 +443,6 @@
         private System.Windows.Forms.Button btnDivide;
         private System.Windows.Forms.Button btnMultiply;
         private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.Button btnEquals;
         private System.Windows.Forms.Button btn1;
         private System.Windows.Forms.Button btnDot;
         private System.Windows.Forms.Button btn3;
@@ -572,23 +455,15 @@
         private System.Windows.Forms.Button btn7;
         private System.Windows.Forms.Button btn0;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button btnSqrt;
-        private System.Windows.Forms.Button btnSquare;
-        private System.Windows.Forms.Button btnInverse;
-        private System.Windows.Forms.Button btnPercent;
-        private System.Windows.Forms.Panel pnlConverter;
-        private System.Windows.Forms.ComboBox cmbCiljna;
-        private System.Windows.Forms.TextBox txtValueToConvert;
-        private System.Windows.Forms.Button btnConvertNow;
-        private System.Windows.Forms.Label lblConverterResult;
-        private System.Windows.Forms.Label lblVelikiRezultat;
-        private System.Windows.Forms.ComboBox cmbIzvorna;
-        private System.Windows.Forms.Label lblStatusKursa;
         private System.Windows.Forms.Button btnHistory;
         private System.Windows.Forms.Button btnLightMode;
         private System.Windows.Forms.Button btnDarkMode;
-        private System.Windows.Forms.Button btnMode;
         private System.Windows.Forms.Button btnAdvanced;
+        private System.Windows.Forms.Button btnPercent;
+        private System.Windows.Forms.Button btnInverse;
+        private System.Windows.Forms.Button btnSquare;
+        private System.Windows.Forms.Button btnSqrt;
+        private System.Windows.Forms.Button btnEquals;
     }
 }
 
