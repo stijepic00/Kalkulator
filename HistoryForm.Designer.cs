@@ -28,37 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.flowHistory = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // flowHistory
             // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(800, 450);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.flowHistory.AutoScroll = true;
+            this.flowHistory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowHistory.Location = new System.Drawing.Point(0, 0);
+            this.flowHistory.Name = "flowHistory";
+            this.flowHistory.Size = new System.Drawing.Size(308, 272);
+            this.flowHistory.TabIndex = 0;
+            this.flowHistory.Paint += new System.Windows.Forms.PaintEventHandler(this.flowHistory_Paint);
             // 
             // HistoryForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dataGridView1);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.ClientSize = new System.Drawing.Size(308, 272);
+            this.Controls.Add(this.flowHistory);
             this.Name = "HistoryForm";
-            this.Text = "HistoryForm";
+            this.Text = "Istorija";
             this.Load += new System.EventHandler(this.HistoryForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.FlowLayoutPanel flowHistory;
     }
 }
