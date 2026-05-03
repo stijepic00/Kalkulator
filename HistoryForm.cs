@@ -30,8 +30,8 @@ namespace Kalkulator
 
         private void UcitajIstorijuUKartice()
         {
-            string connectionString = "Server=DESKTOP-U59UFEA\\SQLEXPRESS;Database=KalkulatorDB;Trusted_Connection=True;";
-
+            //ŠKOLA: string connectionString = "Server=DESKTOP-U59UFEA\\SQLEXPRESS;Database=KalkulatorDB;Trusted_Connection=True;";
+            /*BASE:*/ string connectionString = "Server=DESKTOP-J73S4GL;Database=KalkulatorDB;Trusted_Connection=True;";
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))

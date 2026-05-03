@@ -44,21 +44,27 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pnlTop = new System.Windows.Forms.Panel();
-            this.lblTime = new System.Windows.Forms.Label();
-            this.lblSession = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
+            this.lblSession = new System.Windows.Forms.Label();
+            this.lblTime = new System.Windows.Forms.Label();
             this.pnlDrawer = new System.Windows.Forms.Panel();
+            this.lblUsd = new System.Windows.Forms.Label();
+            this.lblEur = new System.Windows.Forms.Label();
+            this.lblDrawerTitle = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnMenu = new System.Windows.Forms.Button();
             this.lblVersion = new System.Windows.Forms.Label();
-            this.lblDrawerTitle = new System.Windows.Forms.Label();
-            this.lblEur = new System.Windows.Forms.Label();
-            this.lblUsd = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.pnlContent = new System.Windows.Forms.Panel();
+            this.lblSubtitle1 = new System.Windows.Forms.Label();
+            this.lblChf = new System.Windows.Forms.Label();
+            this.lblRsd = new System.Windows.Forms.Label();
+            this.pnlLine1 = new System.Windows.Forms.Panel();
+            this.lblRub = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.pnlTop.SuspendLayout();
             this.pnlDrawer.SuspendLayout();
+            this.pnlContent.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -142,7 +148,7 @@
             this.btnExitApplication.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnExitApplication.FlatAppearance.BorderSize = 0;
             this.btnExitApplication.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExitApplication.Location = new System.Drawing.Point(680, 45);
+            this.btnExitApplication.Location = new System.Drawing.Point(666, 67);
             this.btnExitApplication.Name = "btnExitApplication";
             this.btnExitApplication.Size = new System.Drawing.Size(103, 110);
             this.btnExitApplication.TabIndex = 5;
@@ -193,7 +199,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(709, 147);
+            this.label5.Location = new System.Drawing.Point(695, 169);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(45, 21);
             this.label5.TabIndex = 10;
@@ -230,20 +236,20 @@
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTop.Location = new System.Drawing.Point(0, 0);
             this.pnlTop.Name = "pnlTop";
-            this.pnlTop.Size = new System.Drawing.Size(800, 40);
+            this.pnlTop.Size = new System.Drawing.Size(795, 40);
             this.pnlTop.TabIndex = 13;
             // 
-            // lblTime
+            // lblDate
             // 
-            this.lblTime.AutoSize = true;
-            this.lblTime.Font = new System.Drawing.Font("Consolas", 12.25F, System.Drawing.FontStyle.Italic);
-            this.lblTime.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblTime.Location = new System.Drawing.Point(691, 9);
-            this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(126, 20);
-            this.lblTime.TabIndex = 0;
-            this.lblTime.Text = "Vrijeme uživo";
-            this.lblTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblDate.AutoSize = true;
+            this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.lblDate.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblDate.Location = new System.Drawing.Point(21, 9);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(59, 20);
+            this.lblDate.TabIndex = 2;
+            this.lblDate.Text = "Datum";
+            this.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblSession
             // 
@@ -258,30 +264,67 @@
             this.lblSession.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblSession.Click += new System.EventHandler(this.lblSession_Click);
             // 
-            // lblDate
+            // lblTime
             // 
-            this.lblDate.AutoSize = true;
-            this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.lblDate.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblDate.Location = new System.Drawing.Point(21, 9);
-            this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(59, 20);
-            this.lblDate.TabIndex = 2;
-            this.lblDate.Text = "Datum";
-            this.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblTime.AutoSize = true;
+            this.lblTime.Font = new System.Drawing.Font("Consolas", 12.25F, System.Drawing.FontStyle.Italic);
+            this.lblTime.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblTime.Location = new System.Drawing.Point(691, 9);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(126, 20);
+            this.lblTime.TabIndex = 0;
+            this.lblTime.Text = "Vrijeme uživo";
+            this.lblTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // pnlDrawer
             // 
             this.pnlDrawer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.pnlDrawer.Controls.Add(this.label10);
+            this.pnlDrawer.Controls.Add(this.lblRub);
+            this.pnlDrawer.Controls.Add(this.pnlLine1);
+            this.pnlDrawer.Controls.Add(this.lblRsd);
+            this.pnlDrawer.Controls.Add(this.lblChf);
+            this.pnlDrawer.Controls.Add(this.lblSubtitle1);
             this.pnlDrawer.Controls.Add(this.lblUsd);
             this.pnlDrawer.Controls.Add(this.lblEur);
             this.pnlDrawer.Controls.Add(this.lblDrawerTitle);
-            this.pnlDrawer.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlDrawer.Location = new System.Drawing.Point(0, 40);
+            this.pnlDrawer.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnlDrawer.Location = new System.Drawing.Point(795, 40);
             this.pnlDrawer.Name = "pnlDrawer";
             this.pnlDrawer.Size = new System.Drawing.Size(0, 435);
             this.pnlDrawer.TabIndex = 14;
+            // 
+            // lblUsd
+            // 
+            this.lblUsd.AutoSize = true;
+            this.lblUsd.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(195)))), ((int)(((byte)(20)))));
+            this.lblUsd.Location = new System.Drawing.Point(10, 102);
+            this.lblUsd.Name = "lblUsd";
+            this.lblUsd.Size = new System.Drawing.Size(14, 15);
+            this.lblUsd.TabIndex = 18;
+            this.lblUsd.Text = "$";
+            // 
+            // lblEur
+            // 
+            this.lblEur.AutoSize = true;
+            this.lblEur.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEur.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(195)))), ((int)(((byte)(20)))));
+            this.lblEur.Location = new System.Drawing.Point(10, 73);
+            this.lblEur.Name = "lblEur";
+            this.lblEur.Size = new System.Drawing.Size(14, 15);
+            this.lblEur.TabIndex = 17;
+            this.lblEur.Text = "€";
+            // 
+            // lblDrawerTitle
+            // 
+            this.lblDrawerTitle.AutoSize = true;
+            this.lblDrawerTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDrawerTitle.ForeColor = System.Drawing.Color.SteelBlue;
+            this.lblDrawerTitle.Location = new System.Drawing.Point(17, 14);
+            this.lblDrawerTitle.Name = "lblDrawerTitle";
+            this.lblDrawerTitle.Size = new System.Drawing.Size(158, 21);
+            this.lblDrawerTitle.TabIndex = 0;
+            this.lblDrawerTitle.Text = "BRZE INFORMACIJE";
             // 
             // timer1
             // 
@@ -291,14 +334,18 @@
             // 
             // btnMenu
             // 
-            this.btnMenu.BackColor = System.Drawing.Color.Transparent;
-            this.btnMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnMenu.BackgroundImage")));
+            this.btnMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.btnMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnMenu.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMenu.FlatAppearance.BorderSize = 0;
-            this.btnMenu.Location = new System.Drawing.Point(162, 438);
+            this.btnMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMenu.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.btnMenu.ForeColor = System.Drawing.Color.White;
+            this.btnMenu.Location = new System.Drawing.Point(697, 20);
             this.btnMenu.Name = "btnMenu";
-            this.btnMenu.Size = new System.Drawing.Size(33, 41);
+            this.btnMenu.Size = new System.Drawing.Size(43, 41);
             this.btnMenu.TabIndex = 15;
+            this.btnMenu.Text = "☰";
             this.btnMenu.UseVisualStyleBackColor = false;
             this.btnMenu.Click += new System.EventHandler(this.btnMenu_Click);
             // 
@@ -306,74 +353,90 @@
             // 
             this.lblVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblVersion.AutoSize = true;
-            this.lblVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVersion.ForeColor = System.Drawing.Color.Gray;
-            this.lblVersion.Location = new System.Drawing.Point(677, 448);
+            this.lblVersion.Location = new System.Drawing.Point(692, 395);
             this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(47, 18);
+            this.lblVersion.Size = new System.Drawing.Size(77, 25);
             this.lblVersion.TabIndex = 16;
             this.lblVersion.Text = "v1.0.1";
             this.lblVersion.Click += new System.EventHandler(this.lblVersion_Click);
             // 
-            // lblDrawerTitle
+            // pnlContent
             // 
-            this.lblDrawerTitle.AutoSize = true;
-            this.lblDrawerTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.lblDrawerTitle.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblDrawerTitle.Location = new System.Drawing.Point(12, 10);
-            this.lblDrawerTitle.Name = "lblDrawerTitle";
-            this.lblDrawerTitle.Size = new System.Drawing.Size(152, 18);
-            this.lblDrawerTitle.TabIndex = 0;
-            this.lblDrawerTitle.Text = "BRZE INFORMACIJE";
+            this.pnlContent.Controls.Add(this.lblVersion);
+            this.pnlContent.Controls.Add(this.btnMenu);
+            this.pnlContent.Controls.Add(this.label5);
+            this.pnlContent.Controls.Add(this.btnExitApplication);
+            this.pnlContent.Location = new System.Drawing.Point(14, 46);
+            this.pnlContent.Name = "pnlContent";
+            this.pnlContent.Size = new System.Drawing.Size(774, 443);
+            this.pnlContent.TabIndex = 17;
+            this.pnlContent.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlContent_Paint);
             // 
-            // lblEur
+            // lblSubtitle1
             // 
-            this.lblEur.AutoSize = true;
-            this.lblEur.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEur.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblEur.Location = new System.Drawing.Point(10, 105);
-            this.lblEur.Name = "lblEur";
-            this.lblEur.Size = new System.Drawing.Size(17, 20);
-            this.lblEur.TabIndex = 17;
-            this.lblEur.Text = "€";
+            this.lblSubtitle1.AutoSize = true;
+            this.lblSubtitle1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold);
+            this.lblSubtitle1.ForeColor = System.Drawing.Color.Gray;
+            this.lblSubtitle1.Location = new System.Drawing.Point(46, 42);
+            this.lblSubtitle1.Name = "lblSubtitle1";
+            this.lblSubtitle1.Size = new System.Drawing.Size(102, 19);
+            this.lblSubtitle1.TabIndex = 22;
+            this.lblSubtitle1.Text = "VALUTE (BAM)";
             // 
-            // lblUsd
+            // lblChf
             // 
-            this.lblUsd.AutoSize = true;
-            this.lblUsd.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsd.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblUsd.Location = new System.Drawing.Point(10, 132);
-            this.lblUsd.Name = "lblUsd";
-            this.lblUsd.Size = new System.Drawing.Size(17, 20);
-            this.lblUsd.TabIndex = 18;
-            this.lblUsd.Text = "$";
+            this.lblChf.AutoSize = true;
+            this.lblChf.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblChf.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(195)))), ((int)(((byte)(20)))));
+            this.lblChf.Location = new System.Drawing.Point(10, 131);
+            this.lblChf.Name = "lblChf";
+            this.lblChf.Size = new System.Drawing.Size(14, 15);
+            this.lblChf.TabIndex = 23;
+            this.lblChf.Text = "₣";
             // 
-            // label10
+            // lblRsd
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label10.Location = new System.Drawing.Point(10, 163);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(129, 20);
-            this.label10.TabIndex = 19;
-            this.label10.Text = "1 EUR = 1.95 BAM";
+            this.lblRsd.AutoSize = true;
+            this.lblRsd.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRsd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(195)))), ((int)(((byte)(20)))));
+            this.lblRsd.Location = new System.Drawing.Point(10, 159);
+            this.lblRsd.Name = "lblRsd";
+            this.lblRsd.Size = new System.Drawing.Size(28, 15);
+            this.lblRsd.TabIndex = 24;
+            this.lblRsd.Text = "RSD";
+            // 
+            // pnlLine1
+            // 
+            this.pnlLine1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.pnlLine1.Location = new System.Drawing.Point(13, 223);
+            this.pnlLine1.Name = "pnlLine1";
+            this.pnlLine1.Size = new System.Drawing.Size(170, 3);
+            this.pnlLine1.TabIndex = 25;
+            // 
+            // lblRub
+            // 
+            this.lblRub.AutoSize = true;
+            this.lblRub.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRub.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(195)))), ((int)(((byte)(20)))));
+            this.lblRub.Location = new System.Drawing.Point(10, 190);
+            this.lblRub.Name = "lblRub";
+            this.lblRub.Size = new System.Drawing.Size(14, 15);
+            this.lblRub.TabIndex = 26;
+            this.lblRub.Text = "₽";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 475);
-            this.Controls.Add(this.lblVersion);
+            this.ClientSize = new System.Drawing.Size(795, 475);
             this.Controls.Add(this.pnlDrawer);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.btnMenu);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnExitApplication);
             this.Controls.Add(this.btnCurrency);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.btnHistory);
@@ -381,6 +444,7 @@
             this.Controls.Add(this.btnScale);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pnlTop);
+            this.Controls.Add(this.pnlContent);
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -390,6 +454,8 @@
             this.pnlTop.PerformLayout();
             this.pnlDrawer.ResumeLayout(false);
             this.pnlDrawer.PerformLayout();
+            this.pnlContent.ResumeLayout(false);
+            this.pnlContent.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -419,8 +485,13 @@
         private System.Windows.Forms.Button btnMenu;
         private System.Windows.Forms.Label lblVersion;
         private System.Windows.Forms.Label lblDrawerTitle;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label lblUsd;
         private System.Windows.Forms.Label lblEur;
+        private System.Windows.Forms.Panel pnlContent;
+        private System.Windows.Forms.Label lblSubtitle1;
+        private System.Windows.Forms.Panel pnlLine1;
+        private System.Windows.Forms.Label lblRsd;
+        private System.Windows.Forms.Label lblChf;
+        private System.Windows.Forms.Label lblRub;
     }
 }
